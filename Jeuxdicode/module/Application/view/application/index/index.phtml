@@ -1,0 +1,88 @@
+<div class="jumbotron">
+	<img style="float:left;" src="img/logo-jeuxdicode.png" alt="Logo Jeuxdicode" />
+	<h1><?php echo sprintf($this->translate('Bienvenue dans l\'espace d\'administration de Jeuxdicode')); ?> </h1>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><?php echo $this->translate('Evenement en cours :') ?></h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <th>Titre</th>
+                                <th>Description resumee</th>
+                                <th>Date debut</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td><?php echo $this->escapeHtml($evenementCourant->titre); ?></td>
+                                <td><?php echo $this->escapeHtml($evenementCourant->description_resume); ?></td>
+                                <td><?php echo $this->escapeHtml($evenementCourant->date_debut); ?></td>
+                                <td><a class="btn btn-success btn-sm pull-right" href="<?php echo $this->url('gestevenement', array('action'=>'detail', 'id' => $evenementCourant->idevenement)); ?>" target=""><?php echo $this->translate('Détails') ?> &raquo;</a></td>
+                            </tr>
+                        </table>
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><?php echo $this->translate('Evenements passes :') ?></h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <th>Titre</th>
+                                <th>Description resumee</th>
+                                <th>Date debut</th>
+                                <th></th>
+                            </tr>
+                            <?php foreach($evenementPasses as $evt) : ?>
+                            <tr>
+                                <td><?php echo $this->escapeHtml($evt->titre); ?></td>
+                                <td><?php echo $this->escapeHtml($evt->description_resume); ?></td>
+                                <td><?php echo $this->escapeHtml($evt->date_debut); ?></td>
+                                <td><a class="btn btn-success btn-sm pull-right" href="<?php echo $this->url('gestevenement', array('action'=>'detail', 'id' => $evt->idevenement)); ?>" target=""><?php echo $this->translate('Détails') ?> &raquo;</a></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Propositions :') ?></h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Membre</th>
+                        <th>Titre</th>
+                        <th></th>
+                    </tr>
+                    <?php foreach($propositions as $prop) : ?>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($prop->idmembre); ?></td>
+                        <td><?php echo $this->escapeHtml($prop->titre); ?></td>
+                        <td><a class="btn btn-success btn-sm pull-right" href="<?php echo $this->url('gestproposition', array('action'=>'add', 'id' => $prop->idproposition)); ?>" target=""><?php echo $this->translate('Créer l\'evenement') ?> &raquo;</a></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

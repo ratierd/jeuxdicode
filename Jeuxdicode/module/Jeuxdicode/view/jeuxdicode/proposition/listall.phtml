@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <h1>Propositions</h1>
+    <table class="table">
+        <tr>
+            <th>Membre</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        <?php foreach($propositions as $prop) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($prop->idmembre); ?></td>
+            <td><?php echo $this->escapeHtml($prop->titre); ?></td>
+            <td><?php echo $this->escapeHtml($prop->description); ?></td>
+            <td class="pull-right"><a class="btn btn-success" href="<?php echo $this->url('gestevenement', array('action'=>'add', 'id' => $prop->idproposition)); ?>" target=""><?php echo $this->translate('Créer l\'evenement') ?> &raquo;</a></td>
+         </tr>
+         <?php endforeach; ?>
+    </table>
+</div>

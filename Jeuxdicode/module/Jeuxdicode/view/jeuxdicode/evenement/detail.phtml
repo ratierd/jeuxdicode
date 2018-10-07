@@ -1,0 +1,76 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Evenement') ?></h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description resumee</th>
+                        <th>Date debut</th>
+                        <th>Date fin</th>
+                        <th>Nb max de participants</th>
+                        <th>Adresse</th>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($evenement->titre); ?></td>
+                        <td><?php echo $this->escapeHtml($evenement->description_resume); ?></td>
+                        <td><?php echo $this->escapeHtml($evenement->date_debut); ?></td>
+                        <td><?php echo $this->escapeHtml($evenement->date_fin); ?></td>
+                        <td><?php echo $this->escapeHtml($evenement->nbpartmax); ?></td>
+                        <td><?php echo $this->escapeHtml($evenement->adresse); ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Sessions') ?></h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Titre</th>
+                        <th></th>
+                    </tr>
+                    <?php foreach($sessions as $session) : ?>
+                    <tr>
+                        <td> <?php echo $this->escapeHtml($session->titre); ?> </td>
+                        <td class="pull-right"><a class="btn btn-success" href="<?php echo $this->url('gestsession', array('action'=>'detail', 'id' => $session->idsession)); ?>" target=""><?php echo $this->translate('Détails') ?> &raquo;</a>
+                        <a class="btn btn-success" href="<?php echo $this->url('gestsession', array('action'=>'edit', 'id' => $session->idsession)); ?>" target=""><?php echo $this->translate('Modifier') ?> &raquo;</a></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+                <a class="btn btn-success pull-left" href="<?php echo $this->url('gestsession', array('action'=>'add', 'id' => $evenement->idevenement)); ?>" target=""><?php echo $this->translate('Ajouter') ?> &raquo;</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Liste des participants') ?></h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Adresse Mail</th>
+                    </tr>
+                    <?php foreach($participants as $participant) : ?>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($participant->nom); ?></td>
+                        <td><?php echo $this->escapeHtml($participant->prenom); ?></td>
+                        <td><?php echo $this->escapeHtml($participant->email); ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-success" href="<?php echo $this->url('gestevenement', array('action'=>'edit', 'id' => $evenement->idevenement)); ?>" target=""><?php echo $this->translate('Modifier') ?> &raquo;</a>
+</div>

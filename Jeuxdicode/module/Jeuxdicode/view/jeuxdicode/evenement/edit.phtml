@@ -1,0 +1,53 @@
+<div class="jumbotron">
+    <h1>Modifier evenement</h1>
+    <?php 
+$form->setAttribute('class', 'form-horizontal');
+$form->prepare();
+echo $this->form()->openTag($form);
+$form->setAttribute('action', $this->url('gestevenement', array('action'=>'edit', 'id' => $form->getInputFilter()->getValue('idevenement'),)));
+
+echo $this->formHidden($form->get('idevenement'));
+echo $this->formHidden($form->get('nbpartmax'));
+    ?>	
+
+    <div class="control-groupe-col-sm-3">
+        <?php echo $this->formLabel($form->get('titre')); ?>
+    </div>
+    <div class="control-group-col-sm-9">
+        <?php echo $this->formInput($form->get('titre')); ?>
+    </div>	
+
+    <div class="control-groupe-col-sm-3">
+        <?php echo $this->formLabel($form->get('description_resume')); ?>
+    </div>
+    <div class="control-group-col-sm-9">
+        <?php echo $this->formInput($form->get('description_resume')); ?>
+    </div>	
+
+    <div class="control-groupe-col-sm-3">
+        <?php echo $this->formLabel($form->get('date_debut')); ?>
+    </div>
+    <div class="control-group-col-sm-9">
+        <?php echo $this->formInput($form->get('date_debut')); ?>
+    </div>	
+
+    <div class="control-groupe-col-sm-3">
+        <?php echo $this->formLabel($form->get('date_fin')); ?>
+    </div>
+    <div class="control-group-col-sm-9">
+        <?php echo $this->formInput($form->get('date_fin')); ?>
+    </div>	
+
+    <div class="control-groupe-col-sm-3">
+        <?php echo $this->formLabel($form->get('adresse')); ?>
+    </div>
+    <div class="control-group-col-sm-9">
+        <?php echo $this->formInput($form->get('adresse')); ?>
+    </div>
+
+    </br>
+
+<?php echo $this->formSubmit($form->get('submit')); ?>
+
+<?php echo $this->form()->closeTag(); ?>
+</div>

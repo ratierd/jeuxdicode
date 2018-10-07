@@ -1,0 +1,25 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Détails de la session')?></h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Auteur</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($session->titre); ?></td>
+                        <td><?php echo $this->escapeHtml($session->description); ?></td>
+                        <td><?php echo $this->escapeHtml($membre->prenom)." ".$this->escapeHtml($membre->nom); ?></td>
+                        <td class="pull-right"><a class="btn btn-success" href="<?php echo $this->url('gestsession', array('action'=>'edit', 'id' => $session->idsession)); ?>" target=""><?php echo $this->translate('Modifier') ?> &raquo;</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+<div class="jumbotron">
